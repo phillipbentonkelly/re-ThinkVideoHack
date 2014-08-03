@@ -1,13 +1,15 @@
+var popcorn = {};
+var reThinkVideoHack = {};
+var ramp_playlistURLString = "http://api.ramp.com/v1/mp2/playlist?";
+var ramp_matchesURLString = "http://api.ramp.com/v1/matches?";
+var rampURLApiKey = "n7ELYTrOQllZ0zMM9UJqO6CGy6kT7NOW";
+var rampURLItemID = 95186469;
+var ramp_playlistURLFull = "";
+var ramp_matchesURLFull = "";
+
+var MVC = {};
+
 //<![CDATA[
-	var popcorn = {};
-	var reThinkVideoHack = {};
-	var ramp_playlistURLString = "http://api.ramp.com/v1/mp2/playlist?";
-	var ramp_matchesURLString = "http://api.ramp.com/v1/matches?";
-	var rampURLApiKey = "n7ELYTrOQllZ0zMM9UJqO6CGy6kT7NOW";
-	var rampURLItemID = 95186469;
-	var ramp_playlistURLFull = "";
-	var ramp_matchesURLFull = "";
-	
 	window.mpf_player = {};
 
 	$(function(){
@@ -27,7 +29,11 @@
 		.ramp(ramp_playlistURLFull)
 		.load();
 
-		window.mpf_player.video.autoplay = false;
+		window.mpf_player.video.autoplay = true;
+
+		MVC = {
+			reThinkVideoHackModel: RTVH()
+		};
 
 		initPopCornCues();
 	});
@@ -40,9 +46,21 @@ function initPopCornCues(){
 
 	reThinkVideoHack = {
 		start: function( e, options ){
-			console.log(options);
+			var parsedOptions = {
+				start: options.start,
+				end: options.end,
+				inherits: options.inherits,
+				questionText: options.questionText,
+				prePhrase: options.prePhrase,
+				answer: options.answer,
+				resourceId: rampURLItemID,
+				resourceQId: rampURLItemID + "_" + options.start
+			};
+
+			/*console.log(options);
 			console.log(options.inherits + ' : ' + options.start);
-			reThinkVideoHack.triggerCue(options);
+			console.log(this);*/
+			MVC.reThinkVideoHackModel.processCueInfo( parsedOptions );
 		},
 		end: function( e, options ){
 			metaQAds_ObjExtension.releaseLock();

@@ -1,3 +1,10 @@
+#playerContainer{
+    width: 727px;
+    margin: auto;
+    position: relative;
+
+    overflow: hidden;
+}
 #vidTarget {
     width: 728px;
     height: 416px !important;
