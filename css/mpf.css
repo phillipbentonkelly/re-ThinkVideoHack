@@ -1,0 +1,26 @@
+#vidTarget {
+    width: 728px;
+    height: 416px !important;
+    background: #333;
+}
+#transcript {
+    margin: 25px 0 25px 0;
+    width: 72px;
+    height: 150px;
+    font-family: Verdana,Geneva,sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+}
+#searchbar {
+    outline: 1px solid black;
+    width: 727px;
+}
+.mpf-searchbar-search-input{
+	/*height: 20px;*/
+}
+.mpf-searchbar-search-submit{
+	right:10px;
+}
+#ez-metaq{
+	margin-top: 0px;
+}
