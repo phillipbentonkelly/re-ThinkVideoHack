@@ -21,7 +21,7 @@ var RTVH = {};
             questionPopUp.show();
     	},
     	registerAnswer: function( mpfObjRef ){
-            $(questionPopUp.find('input[id]')).attr('value', "");
+            $('input[id]').attr('value', '');
     		mpfObjRef.video.play();
     	}
     };
